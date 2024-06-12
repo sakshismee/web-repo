@@ -1,0 +1,39 @@
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class FAQChatbot {
+
+    public static void main(String[] args) {
+        // Create a HashMap to store questions and answers
+        HashMap<String, String> faq = new HashMap<>();
+
+        // Add some example questions and answers
+        faq.put("Hello", "Hi there! How can I help you today?");
+        faq.put("What are your capabilities?", "I can answer basic questions based on the FAQs I have been trained on.");
+        faq.put("Do you have a specific question?", "Yes, I do. What would you like to know?");
+
+        // Create a Scanner object to read user input
+        Scanner scanner = new Scanner(System.in);
+
+        // Start the chat loop
+        while (true) {
+            System.out.println("Ask me anything (or type 'quit' to exit):");
+            String question = scanner.nextLine().toLowerCase();
+
+            // Check if the question is a quit command
+            if (question.equals("quit")) {
+                break;
+            }
+
+            // Check if the question exists in the HashMap
+            if (faq.containsKey(question)) {
+                System.out.println(faq.get(question));
+            } else {
+                System.out.println("Sorry, I don't know the answer to that question.  Try asking something different.");
+            }
+        }
+
+        scanner.close();
+        System.out.println("Goodbye!");
+    }
+}
